@@ -42,8 +42,7 @@
         android:layout_below="@+id/Hue"
         android:layout_marginTop="12dp"
         android:background="@drawable/gradient"
-        android:max="359"
-        android:onClick="onTouch" />
+        android:max="359" />
 
     <TextView
         android:id="@+id/Sat"
