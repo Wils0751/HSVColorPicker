@@ -1,6 +1,9 @@
 /**
- *  HSV Color Picker
- *  @author Shannon Wilson (wils0751@algonquinlive.com)
+ * HSV Color Picker is a an application with  Hue, Saturation and Value Seekbar
+ * sliding the seekbars will slide the color swatch and display new colors. There is also
+ * pre set color buttons
+ *
+ * @author Shannon Wilson (wils0751@algonquinlive.com)
  */
 package com.algonquincollege.wils0751.hsccolorpicker;
 
@@ -38,7 +41,6 @@ public class MainActivity extends AppCompatActivity implements Observer, SeekBar
     private TextView mValTv;
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,7 +52,7 @@ public class MainActivity extends AppCompatActivity implements Observer, SeekBar
 
         mModel.addObserver(this);
 
-        mColorSwatch =(TextView) findViewById(R.id.colorSwatch);
+        mColorSwatch = (TextView) findViewById(R.id.colorSwatch);
         mHueSb = (SeekBar) findViewById(R.id.hueSb);
         mSatSb = (SeekBar) findViewById(R.id.Satsb);
         mValSb = (SeekBar) findViewById(R.id.Valsb);
@@ -60,7 +62,7 @@ public class MainActivity extends AppCompatActivity implements Observer, SeekBar
         Button blue = (Button) findViewById(R.id.blueButton);
         Button yellow = (Button) findViewById(R.id.yellowButton);
         Button cyan = (Button) findViewById(R.id.cyanButton);
-        Button magenta= (Button) findViewById(R.id.magentaButton);
+        Button magenta = (Button) findViewById(R.id.magentaButton);
         Button silver = (Button) findViewById(R.id.silverButton);
         Button gray = (Button) findViewById(R.id.grayButton);
         Button maroon = (Button) findViewById(R.id.maroonButton);
@@ -71,12 +73,12 @@ public class MainActivity extends AppCompatActivity implements Observer, SeekBar
         Button navy = (Button) findViewById(R.id.navyButton);
 
         mHueTv = (TextView) findViewById(R.id.Hue);
-        mSatTv =(TextView) findViewById(R.id.Sat);
-        mValTv= (TextView) findViewById(R.id.Val);
+        mSatTv = (TextView) findViewById(R.id.Sat);
+        mValTv = (TextView) findViewById(R.id.Val);
 
-        mHueSb.setMax((int)HSVModel.MAX_HUE);
-        mSatSb.setMax((int)HSVModel.MAX_SAT);
-        mValSb.setMax((int)HSVModel.MAX_VAL);
+        mHueSb.setMax((int) HSVModel.MAX_HUE);
+        mSatSb.setMax((int) HSVModel.MAX_SAT);
+        mValSb.setMax((int) HSVModel.MAX_VAL);
 
         mHueSb.setOnSeekBarChangeListener(this);
         mSatSb.setOnSeekBarChangeListener(this);
@@ -103,79 +105,94 @@ public class MainActivity extends AppCompatActivity implements Observer, SeekBar
 
 
     }
+
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.blackButton:
                 mModel.asBlack();
                 // Toast.makeText(getApplicationContext(), "H: 0 S:0 V: 0", Toast.LENGTH_SHORT).show();
-                Toast.makeText(getApplicationContext(), "H:" + mModel.getHue() + "°" + "S:" + mModel.getSaturation()*100 + "%" + "V:" + mModel.getValue()*100 + "%", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "H:" + mModel.getHue() + "°" + "S:" + mModel.getSaturation() * 100 + "%" + "V:" + mModel.getValue() * 100 + "%", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.redButton:
                 //Toast.makeText(getApplicationContext(), "H: 0 S:100 V: 100", Toast.LENGTH_SHORT).show();
                 mModel.asRed();
-                Toast.makeText(getApplicationContext(), "H:" + mModel.getHue() + "°" + "S:" + mModel.getSaturation()*100 + "%" + "V:" + mModel.getValue()*100 + "%", Toast.LENGTH_SHORT).show();                break;
+                Toast.makeText(getApplicationContext(), "H:" + mModel.getHue() + "°" + "S:" + mModel.getSaturation() * 100 + "%" + "V:" + mModel.getValue() * 100 + "%", Toast.LENGTH_SHORT).show();
+                break;
             case R.id.limeButton:
                 // Toast.makeText(getApplicationContext(), "H:120 S:76 V: 80", Toast.LENGTH_SHORT).show();
                 mModel.asLime();
-                Toast.makeText(getApplicationContext(), "H:" + mModel.getHue() + "°" + "S:" + mModel.getSaturation()*100 + "%" + "V:" + mModel.getValue()*100 + "%", Toast.LENGTH_SHORT).show();                break;
+                Toast.makeText(getApplicationContext(), "H:" + mModel.getHue() + "°" + "S:" + mModel.getSaturation() * 100 + "%" + "V:" + mModel.getValue() * 100 + "%", Toast.LENGTH_SHORT).show();
+                break;
             case R.id.blueButton:
                 //Toast.makeText(getApplicationContext(), "H: 240 S:100 V: 100", Toast.LENGTH_SHORT).show();
                 mModel.asBlue();
-                Toast.makeText(getApplicationContext(), "H:" + mModel.getHue() + "°" + "S:" + mModel.getSaturation()*100 + "%" + "V:" + mModel.getValue()*100 + "%", Toast.LENGTH_SHORT).show();                break;
+                Toast.makeText(getApplicationContext(), "H:" + mModel.getHue() + "°" + "S:" + mModel.getSaturation() * 100 + "%" + "V:" + mModel.getValue() * 100 + "%", Toast.LENGTH_SHORT).show();
+                break;
             case R.id.yellowButton:
                 //Toast.makeText(getApplicationContext(), "H: 60 S:100 V: 100", Toast.LENGTH_SHORT).show();
                 mModel.asYellow();
-                Toast.makeText(getApplicationContext(), "H:" + mModel.getHue() + "°" + "S:" + mModel.getSaturation()*100 + "%" + "V:" + mModel.getValue()*100 + "%", Toast.LENGTH_SHORT).show();                break;
+                Toast.makeText(getApplicationContext(), "H:" + mModel.getHue() + "°" + "S:" + mModel.getSaturation() * 100 + "%" + "V:" + mModel.getValue() * 100 + "%", Toast.LENGTH_SHORT).show();
+                break;
             case R.id.cyanButton:
                 //Toast.makeText(getApplicationContext(), "H: 180 S:100 V: 100", Toast.LENGTH_SHORT).show();
                 mModel.asCyan();
-                Toast.makeText(getApplicationContext(), "H:" + mModel.getHue() + "°" + "S:" + mModel.getSaturation()*100 + "%" + "V:" + mModel.getValue()*100 + "%", Toast.LENGTH_SHORT).show();                break;
+                Toast.makeText(getApplicationContext(), "H:" + mModel.getHue() + "°" + "S:" + mModel.getSaturation() * 100 + "%" + "V:" + mModel.getValue() * 100 + "%", Toast.LENGTH_SHORT).show();
+                break;
             case R.id.magentaButton:
                 //Toast.makeText(getApplicationContext(), "H: 300 S:100 V: 100", Toast.LENGTH_SHORT).show();
                 mModel.asMagenta();
-                Toast.makeText(getApplicationContext(), "H:" + mModel.getHue() + "°" + "S:" + mModel.getSaturation()*100 + "%" + "V:" + mModel.getValue()*100 + "%", Toast.LENGTH_SHORT).show();                break;
+                Toast.makeText(getApplicationContext(), "H:" + mModel.getHue() + "°" + "S:" + mModel.getSaturation() * 100 + "%" + "V:" + mModel.getValue() * 100 + "%", Toast.LENGTH_SHORT).show();
+                break;
             case R.id.silverButton:
                 //Toast.makeText(getApplicationContext(), "H: 0 S:0 V: 75", Toast.LENGTH_SHORT).show();
                 mModel.asSilver();
-                Toast.makeText(getApplicationContext(), "H:" + mModel.getHue() + "°" + "S:" + mModel.getSaturation()*100 + "%" + "V:" + mModel.getValue()*100 + "%", Toast.LENGTH_SHORT).show();                break;
+                Toast.makeText(getApplicationContext(), "H:" + mModel.getHue() + "°" + "S:" + mModel.getSaturation() * 100 + "%" + "V:" + mModel.getValue() * 100 + "%", Toast.LENGTH_SHORT).show();
+                break;
             case R.id.grayButton:
                 //Toast.makeText(getApplicationContext(), "H: 0 S:0 V: 50", Toast.LENGTH_SHORT).show();
                 mModel.asGray();
-                Toast.makeText(getApplicationContext(), "H:" + mModel.getHue() + "°" + "S:" + mModel.getSaturation()*100 + "%" + "V:" + mModel.getValue()*100 + "%", Toast.LENGTH_SHORT).show();                break;
+                Toast.makeText(getApplicationContext(), "H:" + mModel.getHue() + "°" + "S:" + mModel.getSaturation() * 100 + "%" + "V:" + mModel.getValue() * 100 + "%", Toast.LENGTH_SHORT).show();
+                break;
             case R.id.maroonButton:
                 //Toast.makeText(getApplicationContext(), "H: 0 S:100 V: 50", Toast.LENGTH_SHORT).show();
                 mModel.asMaroon();
-                Toast.makeText(getApplicationContext(), "H:" + mModel.getHue() + "°" + "S:" + mModel.getSaturation()*100 + "%" + "V:" + mModel.getValue()*100 + "%", Toast.LENGTH_SHORT).show();                break;
+                Toast.makeText(getApplicationContext(), "H:" + mModel.getHue() + "°" + "S:" + mModel.getSaturation() * 100 + "%" + "V:" + mModel.getValue() * 100 + "%", Toast.LENGTH_SHORT).show();
+                break;
             case R.id.oliveButton:
                 //Toast.makeText(getApplicationContext(), "H: 60 S:100 V:50", Toast.LENGTH_SHORT).show();
                 mModel.asOlive();
-                Toast.makeText(getApplicationContext(), "H:" + mModel.getHue() + "°" + "S:" + mModel.getSaturation()*100 + "%" + "V:" + mModel.getValue()*100 + "%", Toast.LENGTH_SHORT).show();                break;
+                Toast.makeText(getApplicationContext(), "H:" + mModel.getHue() + "°" + "S:" + mModel.getSaturation() * 100 + "%" + "V:" + mModel.getValue() * 100 + "%", Toast.LENGTH_SHORT).show();
+                break;
             case R.id.greenButton:
                 //  Toast.makeText(getApplicationContext(), "H:120 S:100 V: 50", Toast.LENGTH_SHORT).show();
                 mModel.asGreen();
-                Toast.makeText(getApplicationContext(), "H:" + mModel.getHue() + "°" + "S:" + mModel.getSaturation()*100 + "%" + "V:" + mModel.getValue()*100 + "%", Toast.LENGTH_SHORT).show();                break;
+                Toast.makeText(getApplicationContext(), "H:" + mModel.getHue() + "°" + "S:" + mModel.getSaturation() * 100 + "%" + "V:" + mModel.getValue() * 100 + "%", Toast.LENGTH_SHORT).show();
+                break;
             case R.id.purpleButton:
                 // Toast.makeText(getApplicationContext(), "H: 300 S:100 V: 50", Toast.LENGTH_SHORT).show();
                 mModel.asPurple();
-                Toast.makeText(getApplicationContext(), "H:" + mModel.getHue() + "°" + "S:" + mModel.getSaturation()*100 + "%" + "V:" + mModel.getValue()*100 + "%", Toast.LENGTH_SHORT).show();                break;
+                Toast.makeText(getApplicationContext(), "H:" + mModel.getHue() + "°" + "S:" + mModel.getSaturation() * 100 + "%" + "V:" + mModel.getValue() * 100 + "%", Toast.LENGTH_SHORT).show();
+                break;
             case R.id.tealButton:
                 // Toast.makeText(getApplicationContext(), "H: 180 S:100 V: 50", Toast.LENGTH_SHORT).show();
                 mModel.asTeal();
-                Toast.makeText(getApplicationContext(), "H:" + mModel.getHue() + "°" + "S:" + mModel.getSaturation()*100 + "%" + "V:" + mModel.getValue()*100 + "%", Toast.LENGTH_SHORT).show();                break;
+                Toast.makeText(getApplicationContext(), "H:" + mModel.getHue() + "°" + "S:" + mModel.getSaturation() * 100 + "%" + "V:" + mModel.getValue() * 100 + "%", Toast.LENGTH_SHORT).show();
+                break;
             case R.id.navyButton:
                 //  Toast.makeText(getApplicationContext(), "H:240 S:100 V: 50", Toast.LENGTH_SHORT).show();
                 mModel.asNavy();
-                Toast.makeText(getApplicationContext(), "H:" + mModel.getHue() + "°" + "S:" + mModel.getSaturation()*100 + "%" + "V:" + mModel.getValue()*100 + "%", Toast.LENGTH_SHORT).show();                break;
+                Toast.makeText(getApplicationContext(), "H:" + mModel.getHue() + "°" + "S:" + mModel.getSaturation() * 100 + "%" + "V:" + mModel.getValue() * 100 + "%", Toast.LENGTH_SHORT).show();
+                break;
 
         }
         mColorSwatch.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                Toast.makeText(getApplicationContext(), "H:" + mModel.getHue() + "°" + "S:" + mModel.getSaturation()*100 + "%" + "V:" + mModel.getValue()*100 + "%", Toast.LENGTH_SHORT).show();                return true;
+                Toast.makeText(getApplicationContext(), "H:" + mModel.getHue() + "°" + "S:" + mModel.getSaturation() * 100 + "%" + "V:" + mModel.getValue() * 100 + "%", Toast.LENGTH_SHORT).show();
+                return true;
             }
         });
-
 
 
     }
@@ -203,7 +220,7 @@ public class MainActivity extends AppCompatActivity implements Observer, SeekBar
     }
 
     @Override
-    public void onProgressChanged (SeekBar seekbar, int progress, boolean fromUser){
+    public void onProgressChanged(SeekBar seekbar, int progress, boolean fromUser) {
 
         // Did the user cause this event?
         // YES > continue
@@ -220,26 +237,27 @@ public class MainActivity extends AppCompatActivity implements Observer, SeekBar
             case R.id.hueSb:
                 mModel.setHue((float) mHueSb.getProgress());
 
-               // mHueTv.setText(String.valueOf("Hue " + mHueSb.getProgress() + "\u00B0"));
-                mHueTv.setText(  getResources().getString(R.string.hueProgress, progress).toUpperCase());
+                // mHueTv.setText(String.valueOf("Hue " + mHueSb.getProgress() + "\u00B0"));
+                mHueTv.setText(getResources().getString(R.string.hueProgress, progress).toUpperCase());
                 break;
             case R.id.Satsb:
 
-                mModel.setSaturation((float)mSatSb.getProgress());
-              //  mModel.setSaturation((float) progress/100);
-                mSatTv.setText(  getResources().getString(R.string.satProgress, progress).toUpperCase());
+                mModel.setSaturation((float) mSatSb.getProgress());
+                //  mModel.setSaturation((float) progress/100);
+                mSatTv.setText(getResources().getString(R.string.satProgress, progress).toUpperCase());
                 break;
             case R.id.Valsb:
 
-                mModel.setValue((float)mValSb.getProgress());
-               // mModel.setValue((float) progress/100);
-                mValTv.setText(  getResources().getString(R.string.valProgress, progress ).toUpperCase() );
+                mModel.setValue((float) mValSb.getProgress());
+                // mModel.setValue((float) progress/100);
+                mValTv.setText(getResources().getString(R.string.valProgress, progress).toUpperCase());
                 break;
 
 
         }
 
     }
+
     @Override
     public void onStartTrackingTouch(SeekBar seekBar) {
 
@@ -250,8 +268,8 @@ public class MainActivity extends AppCompatActivity implements Observer, SeekBar
     public void onStopTrackingTouch(SeekBar seekBar) {
         // No-Operation
 
-        switch(seekBar.getId()){
-            case R.id.hueSb:{
+        switch (seekBar.getId()) {
+            case R.id.hueSb: {
                 mHueTv.setText(getResources().getString(R.string.Hue));
                 break;
 
@@ -272,30 +290,33 @@ public class MainActivity extends AppCompatActivity implements Observer, SeekBar
         this.updateView();
 
     }
+
     private void updateColorSwatch() {
-        mColorSwatch.setBackgroundColor(Color.HSVToColor( new float[]{mModel.getHue()
-                ,mModel.getSaturation()
-                ,mModel.getValue()}));
+        mColorSwatch.setBackgroundColor(Color.HSVToColor(new float[]{mModel.getHue()
+                , mModel.getSaturation()
+                , mModel.getValue()}));
 //        Log.d("TAG","H: "+mModel.getHue()+" s: "+mModel.getSaturation()+" v: "+mModel.getValue());
 
     }
 
-    private void updateHueSB(){
-        mHueSb.setProgress((int)(mModel.getHue()));
-    }
-    private void updateSatSB(){
-        mSatSb.setProgress((int)(mModel.getSaturation()*100));
+    private void updateHueSB() {
+        mHueSb.setProgress((int) (mModel.getHue()));
     }
 
-    private void updateValSB(){
-        mValSb.setProgress((int)(mModel.getValue()*100));
+    private void updateSatSB() {
+        mSatSb.setProgress((int) (mModel.getSaturation() * 100));
     }
+
+    private void updateValSB() {
+        mValSb.setProgress((int) (mModel.getValue() * 100));
+    }
+
     public void updateView() {
         this.updateColorSwatch();
         this.updateHueSB();
         this.updateSatSB();
         this.updateValSB();
-}
+    }
 
 //https://github.com/RosyTucker/AndroidHSVColourSelectionDialog/blob/master/HSVColourPickerDialog.java
     //http://android-er.blogspot.ca/2013/09/adjust-hsvhue-saturation-and-value-of.html

@@ -127,8 +127,8 @@ public class HSVModel extends Observable {
 
     public void setHSV(float hue, float saturation, float value) {
         this.hue = hue;
-        this.saturation = saturation/100;
-        this.value = value/100;
+        this.saturation = saturation / 100;
+        this.value = value / 100;
 
         this.updateObservers();
     }
